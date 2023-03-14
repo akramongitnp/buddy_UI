@@ -23,10 +23,8 @@ const styles = StyleSheet.create({
     },
     upper_area: {
         backgroundColor: "#CAFF33",
-        
     },
     lower_area: {
         backgroundColor: "#FF336E",
-        padding: "15%"
     }
 })
