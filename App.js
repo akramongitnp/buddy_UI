@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 import User_dashboard from './screens/user_dashboard';
 
 export default function App() {
   return (
-    <View>
+    <SafeAreaView>
       <User_dashboard />
-    </View>
+    </SafeAreaView>
   );
 }
