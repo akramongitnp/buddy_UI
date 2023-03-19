@@ -4,8 +4,8 @@ import User_dashboard from './screens/user_dashboard';
 
 export default function App() {
   return (
-    <SafeAreaView>
+    <View>
       <User_dashboard />
-    </SafeAreaView>
+    </View>
   );
 }
