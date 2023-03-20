@@ -1,25 +1,3 @@
-// import React from "react";
-// import { View, Text, SafeAreaView } from "react-native";
-
-// export default function User_dashboard() {
-//     return (
-//         <SafeAreaView style={{backgroundColor: "blue", alignItems: "center"}}>
-//             <Text>This is working now!</Text>
-//         </SafeAreaView>
-//     )
-// }
-
-
-
-
-
-
-
-
-
-
-
-
 import React from "react";
 import { StyleSheet, View, Text, SafeAreaView } from "react-native";
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
@@ -27,7 +5,7 @@ import Icons from 'react-native-vector-icons/Ionicons';
 
 export default function user_dashboard() {
     return(
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <View style={styles.upper_area}>
                 <Icons name="menu-outline" size={responsiveFontSize(2.5)} />
                 <Text style={{fontSize: responsiveFontSize(2)}}>buddy</Text>
@@ -37,8 +15,23 @@ export default function user_dashboard() {
                 <Text style={{fontSize: responsiveFontSize(2.5)}}>Hello there, Good morning!</Text>
                 <Text style={{fontSize: responsiveFontSize(2.5)}}>Welcome to buddy.</Text>
             </View>
-            
-        </View>
+            <View style={styles.lower_area}>
+                <View style={styles.t_box}>
+
+                </View>
+                <View style={styles.t_box}>
+
+                </View>
+                <View style={styles.t_box}>
+
+                </View><View style={styles.t_box}>
+
+                </View>
+                <View style={styles.t_box}>
+
+                </View>
+            </View>
+        </SafeAreaView>
     )
 }
 
@@ -51,6 +44,7 @@ const styles = StyleSheet.create({
     },
     upper_area: {
         backgroundColor: "#CAFF33",
+        flex: 1,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
@@ -59,6 +53,7 @@ const styles = StyleSheet.create({
     },
     mid_area: {
         backgroundColor: "#CAFF33",
+        flex: 1,
         flexDirection: "column",
         width: responsiveHeight(100),
         padding: responsiveHeight(2)
