@@ -1,83 +1,146 @@
-// import React from "react";
-// import { View, Text, SafeAreaView } from "react-native";
-
-// export default function User_dashboard() {
-//     return (
-//         <SafeAreaView style={{backgroundColor: "blue", alignItems: "center"}}>
-//             <Text>This is working now!</Text>
-//         </SafeAreaView>
-//     )
-// }
-
-
-
-
-
-
-
-
-
-
-
-
 import React from "react";
-import { StyleSheet, View, Text, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import Header from "../components/header";
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
 import Icons from 'react-native-vector-icons/Ionicons';
 
-export default function user_dashboard() {
-    return(
-        <View style={styles.container}>
-            <View style={styles.upper_area}>
-                <Icons name="menu-outline" size={responsiveFontSize(2.5)} />
-                <Text style={{fontSize: responsiveFontSize(2)}}>buddy</Text>
-                <Icons name="person-circle-outline" size={responsiveFontSize(2.5)} />
-            </View>
+export default function User_dashboard() {
+    return (
+        <View style={{flex: 1 ,alignItems: "center"}}>
+            <Header />
             <View style={styles.mid_area}>
-                <Text style={{fontSize: responsiveFontSize(2.5)}}>Hello there, Good morning!</Text>
-                <Text style={{fontSize: responsiveFontSize(2.5)}}>Welcome to buddy.</Text>
+                <Text style={{fontSize: responsiveFontSize(3.5)}}>Hello there, Good morning!</Text>
+                <Text style={{fontSize: responsiveFontSize(3.5)}}>Welcome to buddy.</Text>
             </View>
-            
+            <ScrollView contentContainerStyle={{alignItems: "center"}} style={styles.card}>
+                <TouchableOpacity>
+                    <View style={styles.t_card}>
+                        <View style={{ justifyContent: "center" }}>
+                            <Icons name="person-circle-outline" size={responsiveFontSize(7)} />
+                        </View>
+                        <View style={{ justifyContent: "center" }}>
+                            <Text style={{fontWeight: "bold", fontSize: responsiveFontSize(2)}}>Rohit</Text>
+                            <Text>Internet expenses.</Text>
+                        </View>
+                        <View style={{justifyContent: "center"}}>
+                            <Text>Rs.600</Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <View style={styles.t_card}>
+                        <View style={{ justifyContent: "center" }}>
+                            <Icons name="person-circle-outline" size={responsiveFontSize(7)} />
+                        </View>
+                        <View style={{ justifyContent: "center" }}>
+                            <Text style={{fontWeight: "bold", fontSize: responsiveFontSize(2)}}>Rohit</Text>
+                            <Text>Internet expenses.</Text>
+                        </View>
+                        <View style={{justifyContent: "center"}}>
+                            <Text>Rs.600</Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <View style={styles.t_card}>
+                        <View style={{ justifyContent: "center" }}>
+                            <Icons name="person-circle-outline" size={responsiveFontSize(7)} />
+                        </View>
+                        <View style={{ justifyContent: "center" }}>
+                            <Text style={{fontWeight: "bold", fontSize: responsiveFontSize(2)}}>Rohit</Text>
+                            <Text>Internet expenses.</Text>
+                        </View>
+                        <View style={{justifyContent: "center"}}>
+                            <Text>Rs.600</Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <View style={styles.t_card}>
+                        <View style={{ justifyContent: "center" }}>
+                            <Icons name="person-circle-outline" size={responsiveFontSize(7)} />
+                        </View>
+                        <View style={{ justifyContent: "center" }}>
+                            <Text style={{fontWeight: "bold", fontSize: responsiveFontSize(2)}}>Rohit</Text>
+                            <Text>Internet expenses.</Text>
+                        </View>
+                        <View style={{justifyContent: "center"}}>
+                            <Text>Rs.600</Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <View style={styles.t_card}>
+                        <View style={{ justifyContent: "center" }}>
+                            <Icons name="person-circle-outline" size={responsiveFontSize(7)} />
+                        </View>
+                        <View style={{ justifyContent: "center" }}>
+                            <Text style={{fontWeight: "bold", fontSize: responsiveFontSize(2)}}>Rohit</Text>
+                            <Text>Internet expenses.</Text>
+                        </View>
+                        <View style={{justifyContent: "center"}}>
+                            <Text>Rs.600</Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <View style={styles.t_card}>
+                        <View style={{ justifyContent: "center" }}>
+                            <Icons name="person-circle-outline" size={responsiveFontSize(7)} />
+                        </View>
+                        <View style={{ justifyContent: "center" }}>
+                            <Text style={{fontWeight: "bold", fontSize: responsiveFontSize(2)}}>Rohit</Text>
+                            <Text>Internet expenses.</Text>
+                        </View>
+                        <View style={{justifyContent: "center"}}>
+                            <Text>Rs.600</Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <View style={styles.t_card}>
+                        <View style={{ justifyContent: "center" }}>
+                            <Icons name="person-circle-outline" size={responsiveFontSize(7)} />
+                        </View>
+                        <View style={{ justifyContent: "center" }}>
+                            <Text style={{fontWeight: "bold", fontSize: responsiveFontSize(2)}}>Rohit</Text>
+                            <Text>Internet expenses.</Text>
+                        </View>
+                        <View style={{justifyContent: "center"}}>
+                            <Text>Rs.600</Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+            </ScrollView>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#FFF",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    upper_area: {
-        backgroundColor: "#CAFF33",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        width: responsiveHeight(100),
-        padding: responsiveWidth(0.5),
-    },
     mid_area: {
-        backgroundColor: "#CAFF33",
-        flexDirection: "column",
-        width: responsiveHeight(100),
-        padding: responsiveHeight(2)
-    },
-    lower_area: {
-        backgroundColor: "red",
-        height: responsiveHeight(100),
-        width: responsiveHeight(100),
-        flexDirection: "column",
-        justifyContent: "space-between",
-        alignItems: "center",
-        borderTopLeftRadius: responsiveHeight(10),
-        borderTopRightRadius: responsiveHeight(10),
-    },
-    t_box: {
-        backgroundColor: "blue",
+        width: responsiveWidth(100),
         height: responsiveHeight(15),
-        width: responsiveWidth(30),
+        padding: responsiveWidth(6)
+    },
+    card: {
+        flex: 1,
+        backgroundColor: "#eee",
+        height: responsiveHeight(100),
+        width: responsiveWidth(95),
+        flexDirection: "column",
+        // alignItems: "center", // We don't need this as we are using srollView default props.
+        borderTopLeftRadius: responsiveHeight(5),
+        borderTopRightRadius: responsiveHeight(5),
+        paddingTop: responsiveHeight(2)
+    },
+    t_card: {
+        width: responsiveWidth(85),
+        height: responsiveHeight(10),
+        backgroundColor: "#fff",
         borderRadius: responsiveWidth(2),
-        padding: responsiveHeight(4),
+        flexDirection: "row",
+        justifyContent: "space-between",
+        padding: responsiveWidth(3),
+        marginTop: responsiveHeight(2)
     }
 })
