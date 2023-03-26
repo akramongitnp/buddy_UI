@@ -123,7 +123,6 @@ const styles = StyleSheet.create({
         padding: responsiveWidth(6)
     },
     card: {
-        flex: 1,
         backgroundColor: "#eee",
         height: responsiveHeight(100),
         width: responsiveWidth(95),
