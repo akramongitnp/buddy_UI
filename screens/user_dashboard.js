@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
         height: responsiveHeight(100),
         width: responsiveWidth(95),
         flexDirection: "column",
-        // alignItems: "center", // We don't need this as we are using srollView default props.
+        // alignItems: "center",  We don't need this as we are using srollView default props.
         borderTopLeftRadius: responsiveHeight(5),
         borderTopRightRadius: responsiveHeight(5),
         paddingTop: responsiveHeight(2)
