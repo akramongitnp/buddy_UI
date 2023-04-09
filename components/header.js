@@ -4,12 +4,12 @@ import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-nat
 import Icons from 'react-native-vector-icons/Ionicons';
 
 
-export default function Header() {
+export default function Header({navigation}) {
   return (
     <SafeAreaView style={styles.header}>
         <TouchableOpacity><Icons name="menu-outline" size={responsiveFontSize(5)} /></TouchableOpacity>
         <Text style={{fontSize: responsiveFontSize(4)}}>buddy</Text>
-        <TouchableOpacity><Icons name="person-circle-outline" size={responsiveFontSize(5)} /></TouchableOpacity>
+        <TouchableOpacity onPress={() => {navigation.navigate('Auth')}}><Icons name="person-circle-outline" size={responsiveFontSize(5)} /></TouchableOpacity>
     </SafeAreaView>
   )
 }
