@@ -1,0 +1,6 @@
+Points to look.
+
+1. FlatList not scrolling fully.
+2. UI not working on windows.
+3. Drawer Navigation not opening properly.
+4. Transaction items needed to be realigment.

@@ -1,0 +1,65 @@
+const TRANSACTIONS = [
+    {
+        id: 1,
+        name: "Rahul",
+        comment: "Internet expenses",
+        amout: 600
+    },
+    {
+        id: 2,
+        name: "Aman",
+        comment: "Water expenses",
+        amout: 500
+    },
+    {
+        id: 3,
+        name: "Bikram",
+        comment: "Grosary expenses",
+        amout: 1200
+    },
+    {
+        id: 4,
+        name: "Homi",
+        comment: "Breakfirst",
+        amout: 200
+    },
+    {
+        id: 5,
+        name: "Kalam",
+        comment: "Electricity bill",
+        amout: 1000
+    },
+    {
+        id: 6,
+        name: "Ishan",
+        comment: "Dinner",
+        amout: 2000
+    },
+    {
+        id: 7,
+        name: "Binod",
+        comment: "Toothpeste",
+        amout: 200
+    },
+    {
+        id: 8,
+        name: "Rahul",
+        comment: "Mislinious",
+        amout: 500
+    },
+    {
+        id: 9,
+        name: "Nawaz",
+        comment: "Grosary",
+        amout: 1000
+    },
+    {
+        id: 10,
+        name: "Bikram",
+        comment: "Tea",
+        amout: 100
+    },
+
+]
+
+export default TRANSACTIONS;
