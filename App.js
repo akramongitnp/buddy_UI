@@ -6,7 +6,7 @@ import Try from './components/try'
 export default function App() {
   return (
     <View>
-      <User_dashboard />
+        <User_dashboard />
     </View>
   );
 }
