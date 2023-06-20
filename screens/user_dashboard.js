@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Modal, FlatList, TextInput } from "react-native";
+import React, {useState, useEffect} from "react";
+import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Modal, FlatList, TextInput, Alert } from "react-native";
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
 import Icons from 'react-native-vector-icons/Ionicons';
 import Transations from "../data/transactions"
@@ -10,10 +10,47 @@ export default function User_dashboard({navigation}) {
 
     const [modalVisible, setModalVisible] = useState(false)
     const [modalTvisible, setModalTvisible] = useState(false)
+    const [data, setData] = useState([])
+    const [name, setName] = useState("No name")
+    const [comment, setComment] = useState("No comment")
+    const [amount, setAmount] = useState("No amount")    
+    const getData = async() => {
+        try {
+            const resp = await fetch("https://a5ea-115-187-43-100.ngrok-free.app/transactions");
+            const data = await resp.json();
+            setData(data);
+        } catch(error) {
+            console.log(error)
+        }
+    }
+    const addData = () => {
+        var times = new Date(),
+        timestamp = times.getFullYear() + "/" + times.getMonth() + "/" + times.getDay() + "on" + times.getHours() + ":" + times.getMinutes();
+        try {
+            fetch("https://a5ea-115-187-43-100.ngrok-free.app/transactions", {
+                method: "POST",
+                mode: "cors",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: name,
+                    comment: comment,
+                    amount: amount,
+                    date: timestamp
+                })
+            })
+            setModalVisible(!modalVisible)
+        }
+        catch(error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        getData();
+    }, []);
     return (
         <View style={{flex: 1 ,alignItems: "center"}}>
             <SafeAreaView style={styles.header}>
-                <TouchableOpacity><Icons name="menu-outline" size={responsiveFontSize(5)} /></TouchableOpacity>
+                <TouchableOpacity onPress={() => {navigation.navigate('Try')}}><Icons name="menu-outline" size={responsiveFontSize(5)} /></TouchableOpacity>
                 <Text style={{fontSize: responsiveFontSize(4)}}>buddy</Text>
                 <View style={{flexDirection: "row"}}>
                     <TouchableOpacity onPress={() => setModalVisible(true)}><Icons name="add-outline" size={responsiveFontSize(5)}/></TouchableOpacity>
@@ -26,7 +63,7 @@ export default function User_dashboard({navigation}) {
             </View>
             <View style={styles.card}>
                 <FlatList 
-                    data={Transations}
+                    data={data}
                     showsVerticalScrollIndicator={false}
                     renderItem={({item}) => 
                         <TouchableOpacity onPress={() => {setModalTvisible(true)}}>
@@ -39,7 +76,7 @@ export default function User_dashboard({navigation}) {
                                     <Text>{item.comment}</Text>
                                 </View>
                                 <View style={{justifyContent: "center"}}>
-                                    <Text>₹{item.amout}</Text>
+                                    <Text>₹{item.amount}</Text>
                                 </View>
                             </View>
                         </TouchableOpacity>      
@@ -55,14 +92,15 @@ export default function User_dashboard({navigation}) {
             >
                 <View style={styles.modalMid}>
                     <View style={styles.modalView}>
-                        <Input style={{}} placeholder="Enter Amount" keyboardType="numeric"/>
-                        <Input style={{}} placeholder="Enter Description"/>
+                        <Input onChangeText={newText => setName(newText)} placeholder="Enter Name"/>
+                        <Input onChangeText={newText => setAmount(newText)} placeholder="Enter Amount" keyboardType="numeric"/>
+                        <Input onChangeText={newText => setComment(newText)} placeholder="Enter Description"/>
                         <Icons name="newspaper" size={responsiveWidth(20)} style={{paddingLeft: responsiveWidth(45)}}/>
-                        <Button style={{width: responsiveWidth(50)}} onPress={() => setModalVisible(!modalVisible)}>Add</Button>
+                        <Button style={{width: responsiveWidth(50)}} onPress={addData}>Add</Button>
                     </View>
                 </View>
             </Modal>
-            <Modal
+            <Modal 
                 animationType="fade"
                 transparent={true}
                 visible={modalTvisible}
