@@ -13,10 +13,15 @@ export default function User_dashboard({navigation}) {
     const [data, setData] = useState([])
     const [name, setName] = useState("No name")
     const [comment, setComment] = useState("No comment")
-    const [amount, setAmount] = useState("No amount")    
+    const [amount, setAmount] = useState("No amount")
+    const [passedData, setPassedData] = useState({})
+
+    var id = 0
+    
+    const url = "https://cf30-2409-40e1-17-99b3-f02b-b993-67c-9370.ngrok-free.app/transactions"
     const getData = async() => {
         try {
-            const resp = await fetch("https://a5ea-115-187-43-100.ngrok-free.app/transactions");
+            const resp = await fetch(url);
             const data = await resp.json();
             setData(data);
         } catch(error) {
@@ -25,9 +30,9 @@ export default function User_dashboard({navigation}) {
     }
     const addData = () => {
         var times = new Date(),
-        timestamp = times.getFullYear() + "/" + times.getMonth() + "/" + times.getDay() + "on" + times.getHours() + ":" + times.getMinutes();
+        timestamp = times.getFullYear() + "/" + times.getMonth() + "/" + times.getDay() + " on " + times.getHours() + ":" + times.getMinutes();
         try {
-            fetch("https://a5ea-115-187-43-100.ngrok-free.app/transactions", {
+            fetch(url, {
                 method: "POST",
                 mode: "cors",
                 headers: { 'Content-Type': 'application/json' },
@@ -38,11 +43,17 @@ export default function User_dashboard({navigation}) {
                     date: timestamp
                 })
             })
+            getData()
             setModalVisible(!modalVisible)
         }
         catch(error) {
             console.log(error)
         }
+    }
+
+    const itemData = (name, comment, date) => {
+        setModalTvisible(true)
+        setPassedData({name, comment, date})
     }
     useEffect(() => {
         getData();
@@ -65,8 +76,9 @@ export default function User_dashboard({navigation}) {
                 <FlatList 
                     data={data}
                     showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => item + index}
                     renderItem={({item}) => 
-                        <TouchableOpacity onPress={() => {setModalTvisible(true)}}>
+                        <TouchableOpacity onPress={() => itemData(item.name, item.comment, item.date)}>
                             <View style={styles.t_card}>
                                 <View style={{ justifyContent: "center" }}>
                                     <Icons name="person-circle-outline" size={responsiveFontSize(7)} />
@@ -81,7 +93,6 @@ export default function User_dashboard({navigation}) {
                             </View>
                         </TouchableOpacity>      
                     }
-                    keyExtractor={item => item.id}
                 />
             </View>
             <Modal
@@ -104,17 +115,20 @@ export default function User_dashboard({navigation}) {
                 animationType="fade"
                 transparent={true}
                 visible={modalTvisible}
-                onRequestClose={() => {setModalTvisible(!modalTvisible)}}
-            >
+                onRequestClose={() => {
+                    setModalTvisible(!modalTvisible)
+                    setPassedData({})
+                }
+            }>
                 <View style={styles.modalMid}>
                     <View style={styles.modalView}>
                         <View style={{alignItems: "center", justifyContent: "center"}}>
                             <Icons name="person-circle-outline" size={responsiveWidth(30)} style={{}}/>
-                            <Text style={{fontSize: responsiveFontSize(2), fontWeight: "bold"}}>Ronit</Text>
+                            <Text style={{fontSize: responsiveFontSize(2), fontWeight: "bold"}}>{passedData.name}</Text>
                         </View>
                         <View style={{height: responsiveHeight(15), width: responsiveWidth(70), backgroundColor: "#EEEEE5", margin: responsiveWidth(10), borderRadius: responsiveHeight(1), padding: responsiveHeight(1)}}>
-                            <Text style={{fontWeight: "100"}}>20/08/2023 on 09.05 AM</Text>
-                            <Text style={{paddingTop: responsiveHeight(2), fontWeight: "bold"}}>" This is due to Internet charges for this month. "</Text>
+                            <Text style={{fontWeight: "100"}}>{passedData.date}</Text>
+                            <Text style={{paddingTop: responsiveHeight(2), fontWeight: "bold"}}>{passedData.comment}</Text>
                         </View>
                         <Button style={{width: responsiveWidth(50)}} onPress={() => setModalTvisible(!modalTvisible)}>Understood!</Button>
                     </View>

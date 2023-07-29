@@ -7,3 +7,4 @@ Points to look.
 5. Need to work on reducing the state count.
 6. Need to add Alert box as well activity bar.
 7. Have to push all the API code in one component to make the code more understandable.
+8. There are issue with fetching data from FlatList.
